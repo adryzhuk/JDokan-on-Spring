@@ -3,7 +3,11 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/nativelibs4java/jnaerator-runtime/0.11-SNAPSHOT/jnaerator-runtime-0.11-SNAPSHOT.jar!/" />
     </CLASSES>
-    <JAVADOC />
-    <SOURCES />
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nativelibs4java/jnaerator-runtime/0.11-SNAPSHOT/jnaerator-runtime-0.11-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/nativelibs4java/jnaerator-runtime/0.11-SNAPSHOT/jnaerator-runtime-0.11-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

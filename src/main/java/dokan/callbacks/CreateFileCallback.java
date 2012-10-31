@@ -9,22 +9,22 @@ import dokan.DokanFileInfo;
  */
 public interface CreateFileCallback extends Callback {
 
-    public static int FLAG_BACKUP_SEMANTICS = 0x02_00_00_00;
-    public static int FLAG_DELETE_ON_CLOSE = 0x04_00_00_00;
-    public static int FLAG_NO_BUFFERING = 0x20_00_00_00;
-    public static int FLAG_OPEN_NO_RECALL = 0x00_10_00_00;
-    public static int FLAG_OPEN_REPARSE_POINT = 0x00_20_00_00;
-    public static int FLAG_OVERLAPPED = 0x40_00_00_00;
-    public static int FLAG_POSIX_SEMANTICS = 0x00_10_00_00;
-    public static int FLAG_RANDOM_ACCESS = 0x10_00_00_00;
-    public static int FLAG_SESSION_AWARE = 0x00_80_00_00;
-    public static int FLAG_SEQUENTIAL_SCAN = 0x08_00_00_00;
-    public static int FLAG_WRITE_THROUGH = 0x80_00_00_00;
+    public static int FLAG_BACKUP_SEMANTICS = 0x02000000;
+    public static int FLAG_DELETE_ON_CLOSE = 0x04000000;
+    public static int FLAG_NO_BUFFERING = 0x20000000;
+    public static int FLAG_OPEN_NO_RECALL = 0x00100000;
+    public static int FLAG_OPEN_REPARSE_POINT = 0x00200000;
+    public static int FLAG_OVERLAPPED = 0x40000000;
+    public static int FLAG_POSIX_SEMANTICS = 0x00100000;
+    public static int FLAG_RANDOM_ACCESS = 0x10000000;
+    public static int FLAG_SESSION_AWARE = 0x00800000;
+    public static int FLAG_SEQUENTIAL_SCAN = 0x08000000;
+    public static int FLAG_WRITE_THROUGH = 0x80000000;
 
-    public static int ACCESS_GENERIC_ALL = 0x10_00_00_00;
-    public static int ACCESS_GENERIC_READ = 0x80_00_00_00;
-    public static int ACCESS_GENERIC_WRITE = 0x40_00_00_00;
-    public static int ACCESS_GENERIC_EXECUTE = 0x20_00_00_00;
+    public static int ACCESS_GENERIC_ALL = 0x10000000;
+    public static int ACCESS_GENERIC_READ = 0x80000000;
+    public static int ACCESS_GENERIC_WRITE = 0x40000000;
+    public static int ACCESS_GENERIC_EXECUTE = 0x20000000;
 
     public static int CREATE_NEW = 0x1;
     public static int CREATE_ALWAYS = 0x2;
