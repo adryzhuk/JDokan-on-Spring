@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
     <bean id="DokanOptions" class="dokan.DokanOptions">
         <constructor-arg name="version" value="600"> </constructor-arg>
         <constructor-arg name="threadCount" value="0"></constructor-arg>
@@ -9,12 +10,17 @@
         <constructor-arg name="globalContext" value="0"></constructor-arg>
         <constructor-arg name="mountPoint" ref="mountPoint"></constructor-arg>
     </bean>
+
     <bean id="prop" class="com.sun.jna.NativeLong">
-        <constructor-arg value="0"></constructor-arg>
-    </bean>
-    <bean id="mountPoint" class="com.sun.jna.WString">
-        <constructor-arg value="R\0"></constructor-arg>
+        <constructor-arg value="32"></constructor-arg>
     </bean>
 
+    <bean id="mountPoint" class="com.sun.jna.WString">
+        <constructor-arg value="R"></constructor-arg>
+    </bean>
+
+    <bean id="VirtualFS" class="FileSystem.VirtualFS">
+
+    </bean>
 
 </beans>
