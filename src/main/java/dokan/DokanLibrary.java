@@ -1,7 +1,7 @@
 package dokan;
 
 import com.sun.jna.*;
-import ua.com.infopulse.javadokan.win.Win32FindData;
+import win32.Win32FindData;
 
 public interface DokanLibrary extends Library {
     public static final String JNA_LIBRARY_NAME = "dokan";
