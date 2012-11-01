@@ -10,7 +10,7 @@ import dokan.callbacks.CreateFileCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-class CreateFile implements CreateFileCallback,Root,CommonCalback {
+class CreateFile implements CreateFileCallback,CommonCalback {
     @Override
     public int invoke(WString path, int desiredAccess, int shareMode, int creationDesposition, int flagsAndAttributes, DokanFileInfo dokanFileInfo) {
         VirtualFile file = (VirtualFile)root.getFile(path);

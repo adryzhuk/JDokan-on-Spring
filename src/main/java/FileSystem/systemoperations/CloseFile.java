@@ -8,7 +8,7 @@ import dokan.callbacks.CommonCalback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class CloseFile implements CloseFileCallback,Root,CommonCalback {
+public class CloseFile implements CloseFileCallback,CommonCalback {
     @Override
     public int invoke(WString fileName, DokanFileInfo dokanFileInfo) {
         if (dokanFileInfo.context != 0) {

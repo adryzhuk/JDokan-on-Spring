@@ -8,7 +8,7 @@ import dokan.callbacks.FlushFileBuffersCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class FlushBuffers implements CommonCalback,Root,FlushFileBuffersCallback {
+public class FlushBuffers implements CommonCalback,FlushFileBuffersCallback {
     @Override
     public int invoke(WString fileName, DokanFileInfo dokanFileInfo) {
         return ERROR_SUCCESS;

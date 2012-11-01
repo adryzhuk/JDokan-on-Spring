@@ -1,7 +1,6 @@
 package FileSystem.systemoperations;
 
 import FileSystem.VirtualFile;
-import FileSystem.api.File;
 import com.sun.jna.WString;
 import dokan.DokanFileInfo;
 import dokan.callbacks.CommonCalback;
@@ -10,7 +9,7 @@ import dokan.callbacks.CreateDirectoryCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class CreateDirectory implements Root,CreateDirectoryCallback,CommonCalback {
+public class CreateDirectory implements CreateDirectoryCallback,CommonCalback {
     @Override
     public int invoke(WString fileName, DokanFileInfo dokanFileInfo) {
         VirtualFile file = (VirtualFile) root.getFile(fileName);

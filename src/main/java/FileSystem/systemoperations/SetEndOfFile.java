@@ -9,7 +9,7 @@ import dokan.callbacks.SetEndOfFileCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class SetEndOfFile implements CommonCalback,Root,SetEndOfFileCallback {
+public class SetEndOfFile implements CommonCalback,SetEndOfFileCallback {
     @Override
     public int invoke(WString fileName, long length, DokanFileInfo dokanFileInfo) {
         VirtualFile file =(VirtualFile) root.getFile(fileName);

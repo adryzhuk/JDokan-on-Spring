@@ -1,4 +1,5 @@
 import FileSystem.VirtualFS;
+import FileSystem.VirtualVolume;
 import dokan.DokanLibrary;
 import dokan.DokanOptions;
 import org.springframework.beans.factory.BeanFactory;
@@ -24,7 +25,7 @@ public class Main {
 
         fileSystem = (VirtualFS)factory.getBean("VirtualFS");
 
-        showStatus(DokanLibrary.INSTANCE.DokanMain(options,fileSystem));
+        showStatus(DokanLibrary.INSTANCE.DokanMain(new VirtualVolume(),fileSystem));
 
 
 

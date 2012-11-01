@@ -1,5 +1,8 @@
 package dokan.callbacks;
 
+import FileSystem.VirtualFile;
+import FileSystem.api.File;
+
 /**
  * @author: Vyacheslav.Bychkovsk
  */
@@ -21,4 +24,6 @@ public interface CommonCalback {
         public static final int FILE_LIST_DIRECTORY = 1;
         public static final int FILE_READ_DATA = 1;
         public static final int FILE_READ_ATTRIBUTES = 128;
+
+        public static final VirtualFile root = new VirtualFile("root",File.ATTRIBUTE_DIRECTORY);
 }

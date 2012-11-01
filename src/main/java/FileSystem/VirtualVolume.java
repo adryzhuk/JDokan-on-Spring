@@ -25,6 +25,10 @@ public class VirtualVolume extends DokanOptions{
     public static int FILE_CASE_PRESERVED_NAMES = 0x2;
     public static int FILE_PERSISTENT_ACLS = 0x8;
 
+    public VirtualVolume(){
+        this("R","DokanFS",1,255);
+    }
+
     public VirtualVolume(String mountPoint, String fileSystemName, long size, int maximumComponentLength) {
 
         super((short)600, (short)0, new NativeLong(DOKAN_OPTION_REMOVABLE), 0L, new WString(mountPoint));
@@ -37,7 +41,7 @@ public class VirtualVolume extends DokanOptions{
 
         this.maximumComponentLength = maximumComponentLength;
 
-        this.size = size << 33;
+        this.size = size <<33;
 
         this.freeSize = size;
     }

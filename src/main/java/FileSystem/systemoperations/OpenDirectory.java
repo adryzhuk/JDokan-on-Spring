@@ -9,7 +9,7 @@ import dokan.callbacks.OpenDirectoryCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class OpenDirectory implements CommonCalback,OpenDirectoryCallback,Root {
+public class OpenDirectory implements CommonCalback,OpenDirectoryCallback{
     @Override
     public int invoke(WString fileName, DokanFileInfo dokanFileInfo) {
         VirtualFile dir =(VirtualFile) root.getFile(fileName);

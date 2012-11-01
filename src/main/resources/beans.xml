@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
     <bean id="DokanOptions" class="dokan.DokanOptions">
         <constructor-arg name="version" value="600"> </constructor-arg>
@@ -61,9 +61,17 @@
     <bean id="DeleteFile" class="FileSystem.systemoperations.DeleteFile"/>
     <bean id="FindFiles" class="FileSystem.systemoperations.FindFiles"/>
     <bean id="FlushFileBuffers" class="FileSystem.systemoperations.FlushBuffers"/>
-    <bean id="GetDiskFreeSpace" class="FileSystem.systemoperations.GetDiskFreeSpace"/>
-    <bean id="FileInfotmation" class="FileSystem.systemoperations.GetFileInformation"/>
-    <bean id="VolumeInformation" class="FileSystem.systemoperations.GetVolumeInformation"/>
+    <bean id="GetDiskFreeSpace" class="FileSystem.systemoperations.GetDiskFreeSpace">
+            <property name="volume" ref="volume"/>
+    </bean>
+    <bean id="FileInfotmation" class="FileSystem.systemoperations.GetFileInformation">
+            <property name="volume" ref="volume"/>
+    </bean>
+
+    <bean id="VolumeInformation" class="FileSystem.systemoperations.GetVolumeInformation">
+        <property name="volume" ref="volume"/>
+    </bean>
+
     <bean id="MoveFile" class="FileSystem.systemoperations.MoveFile"/>
     <bean id="OpenDirectory" class="FileSystem.systemoperations.OpenDirectory"/>
     <bean id="ReadFile" class="FileSystem.systemoperations.ReadFile"/>

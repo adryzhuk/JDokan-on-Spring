@@ -10,7 +10,7 @@ import dokan.callbacks.SetFileTimeCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class SetFileTimes implements CommonCalback,Root,SetFileTimeCallback {
+public class SetFileTimes implements CommonCalback,SetFileTimeCallback {
     @Override
     public int invoke(WString fileName, WinBase.FILETIME creationTime, WinBase.FILETIME lastAccessTime, WinBase.FILETIME lastWriteTime, DokanFileInfo dokanFileInfo) {
         VirtualFile file = (VirtualFile)root.getFile(fileName);

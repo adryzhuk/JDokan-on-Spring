@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class FindFiles implements Root,FindFilesCallback,CommonCalback {
+public class FindFiles implements FindFilesCallback,CommonCalback {
     @Override
     public int invoke(WString path, DokanLibrary.FillFindDataCallback fillFindData, DokanFileInfo dokanFileInfo) throws UnsupportedEncodingException {
         VirtualFile folder =(VirtualFile) root.getFile(path);

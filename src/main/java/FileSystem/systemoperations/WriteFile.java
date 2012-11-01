@@ -11,7 +11,7 @@ import dokan.callbacks.WriteFileCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class WriteFile implements CommonCalback,Root,WriteFileCallback {
+public class WriteFile implements CommonCalback,WriteFileCallback {
     @Override
     public int invoke(WString fileName, Pointer buffer, int numberOfBytesToWrite, IntByReference numberOfBytesWritten, long offset, DokanFileInfo dokanFileInfo) {
         VirtualFile file = (VirtualFile)root.getFile(fileName);

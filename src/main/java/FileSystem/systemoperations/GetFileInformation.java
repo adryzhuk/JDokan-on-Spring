@@ -1,6 +1,7 @@
 package FileSystem.systemoperations;
 
 import FileSystem.VirtualFile;
+import FileSystem.VirtualVolume;
 import com.sun.jna.WString;
 import com.sun.jna.platform.win32.WinBase;
 import dokan.DokanFileInfo;
@@ -11,7 +12,9 @@ import win32.ByHandleFileInformation;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class GetFileInformation implements Root,GetFileInformationCallback,CommonCalback {
+public class GetFileInformation implements GetFileInformationCallback,CommonCalback {
+    private VirtualVolume volume;
+
     @Override
     public int invoke(WString fileName, ByHandleFileInformation info, DokanFileInfo dokanFileInfo) {
         VirtualFile file = (VirtualFile) root.getFile(fileName);
@@ -28,5 +31,10 @@ public class GetFileInformation implements Root,GetFileInformationCallback,Commo
         info.volumeSerialNumber = volume.getSerialNumber();
 
         return ERROR_SUCCESS;
+    }
+
+    public void setVolume(VirtualVolume volume){
+        this.volume = volume;
+
     }
 }

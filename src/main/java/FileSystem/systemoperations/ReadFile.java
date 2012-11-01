@@ -11,7 +11,7 @@ import dokan.callbacks.ReadFileCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class ReadFile implements CommonCalback,Root,ReadFileCallback {
+public class ReadFile implements CommonCalback,ReadFileCallback {
     @Override
     public int invoke(WString fileName, Pointer buffer, int bufferLen, IntByReference numberOfBytesRead, long offset, DokanFileInfo dokanFileInfo) {
         VirtualFile file = (VirtualFile) root.getFile(fileName);

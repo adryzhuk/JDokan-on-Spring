@@ -9,7 +9,7 @@ import dokan.callbacks.SetFileAttributesCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class SetFileAttributes implements CommonCalback,Root,SetFileAttributesCallback {
+public class SetFileAttributes implements CommonCalback,SetFileAttributesCallback {
     @Override
     public int invoke(WString fileName, int fileAttributes, DokanFileInfo dokanFileInfo) {
         if ((fileAttributes & VirtualFile.MASK) == 0) { // if we actually doesn't want to set attributes of file

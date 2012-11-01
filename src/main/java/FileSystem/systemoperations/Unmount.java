@@ -7,7 +7,7 @@ import dokan.callbacks.UnmountCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class Unmount implements CommonCalback,Root,UnmountCallback {
+public class Unmount implements CommonCalback,UnmountCallback {
     @Override
     public int invoke(DokanFileInfo dokanFileInfo) {
         return ERROR_SUCCESS;

@@ -8,7 +8,7 @@ import dokan.callbacks.MoveFileCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class MoveFile implements CommonCalback,Root,MoveFileCallback {
+public class MoveFile implements CommonCalback,MoveFileCallback {
     @Override
     public int invoke(WString existingFileName, WString newFileName, boolean replaceExisting, DokanFileInfo dokanFileInfo) {
         if (root.moveFile(existingFileName, newFileName, replaceExisting)) {

@@ -9,7 +9,7 @@ import dokan.callbacks.SetAllocationSizeCallback;
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class SetAllocationSize implements CommonCalback,Root,SetAllocationSizeCallback {
+public class SetAllocationSize implements CommonCalback,SetAllocationSizeCallback {
     @Override
     public int invoke(WString fileName, long length, DokanFileInfo dokanFileInfo) {
         VirtualFile file =(VirtualFile) root.getFile(fileName);
