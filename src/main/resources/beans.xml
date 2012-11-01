@@ -20,7 +20,13 @@
     </bean>
 
     <bean id="VirtualFS" class="FileSystem.VirtualFS">
-
+        <property name="createFile" ref="FileCreate"/>
     </bean>
+
+
+    <bean id="FileCreate" class="FileSystem.systemoperations.CreateFile">
+
+        </bean>
+
 
 </beans>
