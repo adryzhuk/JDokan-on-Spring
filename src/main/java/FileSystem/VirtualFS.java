@@ -43,7 +43,4 @@ public class VirtualFS extends DokanOperations {
     public void setFlushBuffers(FlushFileBuffersCallback flushBuffers){
         this.flushFileBuffersCallback = flushBuffers;
     }
-
-
-
 }

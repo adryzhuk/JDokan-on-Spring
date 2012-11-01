@@ -203,9 +203,13 @@ public class VirtualFile implements File,FileOperations {
     @Override
     public Win32FindData getWin32FindData() {
         Win32FindData result = new Win32FindData();
+        byte[] nameBuf;
         try {
-            result.fileName = (name + "\0").getBytes("UTF-16LE");
-            result.alternativeFileName = (alternativeName + "\0").getBytes("UTF-16LE");
+            nameBuf = (name + "\0").getBytes("UTF-16LE");
+            System.arraycopy(nameBuf, 0, result.fileName, 0, nameBuf.length);
+            nameBuf = (alternativeName + "\0").getBytes("UTF-16LE");
+            System.arraycopy(nameBuf, 0, result.alternativeFileName, 0, nameBuf.length);
+
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

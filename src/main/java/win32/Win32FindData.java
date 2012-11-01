@@ -12,8 +12,8 @@ public class Win32FindData extends Structure {
     public int sizeLow;
     public int reserved1;
     public int reserved2;
-    public byte[] fileName;
-    public byte[] alternativeFileName;
+    public byte[] fileName = new byte[255 * 2]; //MAGIC;
+    public byte[] alternativeFileName = new byte[14 * 2];
 
     public Win32FindData() {
         super();

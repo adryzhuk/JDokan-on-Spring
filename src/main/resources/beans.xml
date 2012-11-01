@@ -11,6 +11,15 @@
         <constructor-arg name="mountPoint" ref="mountPoint"></constructor-arg>
     </bean>
 
+    <bean id="volume" class="FileSystem.VirtualVolume">>
+        <constructor-arg name="mountPoint" value=""/>
+        <constructor-arg index="1" ref=""/>
+        <constructor-arg index="2" value=""/>
+        <constructor-arg index="3" value=""/>
+        <constructor-arg index="4" value=""/>
+    </bean>
+
+
     <bean id="prop" class="com.sun.jna.NativeLong">
         <constructor-arg value="32"></constructor-arg>
     </bean>
