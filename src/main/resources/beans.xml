@@ -11,13 +11,13 @@
         <constructor-arg name="mountPoint" ref="mountPoint"></constructor-arg>
     </bean>
 
-    <bean id="volume" class="FileSystem.VirtualVolume">>
+    <bean id="volume" class="FileSystem.VirtualVolume">
         <constructor-arg name="mountPoint" value=""/>
-        <constructor-arg index="1" ref=""/>
-        <constructor-arg index="2" value=""/>
-        <constructor-arg index="3" value=""/>
-        <constructor-arg index="4" value=""/>
+        <constructor-arg name="fileSystemName" value="DokanFS"/>
+        <constructor-arg name="size" value="1"/>
+        <constructor-arg name="maximumComponentLength" value="255"/>
     </bean>
+
 
 
     <bean id="prop" class="com.sun.jna.NativeLong">
@@ -36,6 +36,19 @@
         <property name="deleteDirectory" ref="DeleteDir"/>
         <property name="deleteFile" ref="DeleteFile"/>
         <property name="findFiles" ref="FindFiles"/>
+        <property name="flushBuffers" ref="FlushFileBuffers"/>
+        <property name="getDiskFreeSpace" ref="GetDiskFreeSpace"/>
+        <property name="getFileInformation" ref="FileInfotmation"/>
+        <property name="getVolumeInformation" ref="VolumeInformation"/>
+        <property name="moveFile" ref="MoveFile"/>
+        <property name="openDirectory" ref="OpenDirectory"/>
+        <property name="readFile" ref="ReadFile"/>
+        <property name="allocationSize" ref="AllocSize"/>
+        <property name="endOfFile" ref="EndFile"/>
+        <property name="fileAttributes" ref="FileAttributes"/>
+        <property name="fileTimes" ref="FileTimes"/>
+        <property name="unmount" ref="Unmount"/>
+        <property name="write" ref="Write"/>
 
     </bean>
 
@@ -47,6 +60,20 @@
     <bean id="DeleteDir" class="FileSystem.systemoperations.DeleteDirectory"/>
     <bean id="DeleteFile" class="FileSystem.systemoperations.DeleteFile"/>
     <bean id="FindFiles" class="FileSystem.systemoperations.FindFiles"/>
+    <bean id="FlushFileBuffers" class="FileSystem.systemoperations.FlushBuffers"/>
+    <bean id="GetDiskFreeSpace" class="FileSystem.systemoperations.GetDiskFreeSpace"/>
+    <bean id="FileInfotmation" class="FileSystem.systemoperations.GetFileInformation"/>
+    <bean id="VolumeInformation" class="FileSystem.systemoperations.GetVolumeInformation"/>
+    <bean id="MoveFile" class="FileSystem.systemoperations.MoveFile"/>
+    <bean id="OpenDirectory" class="FileSystem.systemoperations.OpenDirectory"/>
+    <bean id="ReadFile" class="FileSystem.systemoperations.ReadFile"/>
+    <bean id="AllocSize" class="FileSystem.systemoperations.SetAllocationSize"/>
+    <bean id="EndFile" class="FileSystem.systemoperations.SetEndOfFile"/>
+    <bean id="FileAttributes" class="FileSystem.systemoperations.SetFileAttributes"/>
+    <bean id="FileTimes" class="FileSystem.systemoperations.SetFileTimes"/>
+    <bean id="Unmount" class="FileSystem.systemoperations.Unmount"/>
+    <bean id="Write" class="FileSystem.systemoperations.WriteFile"/>
+
 
 
 </beans>

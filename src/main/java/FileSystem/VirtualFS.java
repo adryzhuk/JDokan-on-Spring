@@ -43,4 +43,54 @@ public class VirtualFS extends DokanOperations {
     public void setFlushBuffers(FlushFileBuffersCallback flushBuffers){
         this.flushFileBuffersCallback = flushBuffers;
     }
+
+    public void setGetDiskFreeSpace(GetDiskFreeSpaceCallback getDiskFreeSpace){
+        this.getDiskFreeSpaceCallback = getDiskFreeSpace;
+    }
+
+    public void setGetFileInformation(GetFileInformationCallback fileInformation){
+        this.getFileInformationCallback = fileInformation;
+    }
+
+    public void setGetVolumeInformation(GetVolumeInformationCallback volumeInformation){
+        this.getVolumeInformationCallback = volumeInformation;
+    }
+
+    public void setMoveFile(MoveFileCallback moveFile){
+        this.moveFileCallback = moveFile;
+    }
+
+    public void setOpenDirectory(OpenDirectoryCallback openDirectory){
+        this.openDirectoryCallback = openDirectory;
+    }
+
+    public void setReadFile(ReadFileCallback readFile){
+        this.readFileCallback = readFile;
+    }
+
+    public void setAllocationSize(SetAllocationSizeCallback setAllocationSizeCallback){
+        this.setAllocationSizeCallback = setAllocationSizeCallback;
+    }
+
+    public void setEndOfFile(SetEndOfFileCallback setEndOfFileCallback){
+        this.setEndOfFileCallback = setEndOfFileCallback;
+    }
+
+    public void setFileAttributes(SetFileAttributesCallback setFileAttributesCallback){
+        this.setFileAttributesCallback = setFileAttributesCallback;
+    }
+
+    public void setFileTimes(SetFileTimeCallback setFileTimeCallback){
+        this.setFileTimeCallback = setFileTimeCallback;
+    }
+
+    public void setUnmount(UnmountCallback unmount){
+        this.unmountCallback = unmount;
+    }
+
+    public void setWrite(WriteFileCallback write){
+        this.writeFileCallback = write;
+    }
+
+
 }
