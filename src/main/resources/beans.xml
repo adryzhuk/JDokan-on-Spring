@@ -16,6 +16,8 @@
         <constructor-arg name="fileSystemName" value="DokanFS"/>
         <constructor-arg name="size" value="1"/>
         <constructor-arg name="maximumComponentLength" value="255"/>
+        <property name="name" value="DataCradle"/>
+        <property name="serialNumber" value="0xDEAD"/>
     </bean>
 
 
@@ -32,7 +34,7 @@
         <property name="createFile" ref="CreateFile"/>
         <property name="cleanup" ref="Cleanup"/>
         <property name="closeFile" ref="CloseFile"/>
-        <!--<property name="createDirectory"ref="CreateDir"/>-->
+        <property name="createDirectory" ref="CreateDir"/>
         <property name="deleteDirectory" ref="DeleteDir"/>
         <property name="deleteFile" ref="DeleteFile"/>
         <property name="findFiles" ref="FindFiles"/>

@@ -21,7 +21,7 @@ public class Main {
 
         BeanFactory factory = new XmlBeanFactory(new FileSystemResource("src\\main\\resources\\beans.xml"));
 
-        options = (DokanOptions)factory.getBean("DokanOptions");
+//        options = (DokanOptions)factory.getBean("DokanOptions");
 
         fileSystem = (VirtualFS)factory.getBean("VirtualFS");
 

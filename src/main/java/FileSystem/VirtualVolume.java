@@ -4,6 +4,7 @@ import FileSystem.api.File;
 import com.sun.jna.NativeLong;
 import com.sun.jna.WString;
 import dokan.DokanOptions;
+import dokan.callbacks.CommonCalback;
 
 /**
  * @author: Vyacheslav.Bychkovsk
@@ -19,7 +20,7 @@ public class VirtualVolume extends DokanOptions{
     private long size;
     private long freeSize;
 
-    private VirtualFile root;
+    private VirtualFile root = CommonCalback.root;
 
     public static int FILE_UNICODE_ON_DISK = 0x4;
     public static int FILE_CASE_PRESERVED_NAMES = 0x2;
@@ -33,8 +34,6 @@ public class VirtualVolume extends DokanOptions{
 
         super((short)600, (short)0, new NativeLong(DOKAN_OPTION_REMOVABLE), 0L, new WString(mountPoint));
 
-        this.root = new VirtualFile("\\",File.ATTRIBUTE_DIRECTORY);
-
         this.mountPoint = mountPoint;
 
         this.fileSystemName = fileSystemName;
@@ -44,6 +43,8 @@ public class VirtualVolume extends DokanOptions{
         this.size = size <<33;
 
         this.freeSize = size;
+
+        this.setFileSystemFlags(VirtualVolume.FILE_UNICODE_ON_DISK | VirtualVolume.FILE_CASE_PRESERVED_NAMES);
     }
 
     public String getName() {

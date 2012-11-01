@@ -25,5 +25,5 @@ public interface CommonCalback {
         public static final int FILE_READ_DATA = 1;
         public static final int FILE_READ_ATTRIBUTES = 128;
 
-        public static final VirtualFile root = new VirtualFile("root",File.ATTRIBUTE_DIRECTORY);
+        public static final VirtualFile root = new VirtualFile("\\",File.ATTRIBUTE_DIRECTORY);
 }
