@@ -1,22 +1,21 @@
 package FileSystem;
 
 import FileSystem.api.File;
+import FileSystem.api.FileOperations;
 import com.sun.jna.Pointer;
+import com.sun.jna.WString;
 import com.sun.jna.platform.win32.WinBase;
 import com.sun.jna.ptr.IntByReference;
 import common.Is;
 import win32.Win32FindData;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * @author: Vyacheslav.Bychkovsk
  */
-public class VirtualFile implements File {
+public class VirtualFile implements File,FileOperations {
 
     private Date creationTime;
     private String name;
@@ -219,5 +218,141 @@ public class VirtualFile implements File {
         result.sizeLow = (int) (getSize());
 
         return result;
+    }
+
+    @Override
+    public boolean setEOF(long length) {
+        if (isDirectory()) {
+            System.out.println("\tSetEOF failed");
+            return false;
+        }
+
+        content.setSize(length);
+        return true;
+    }
+
+    @Override
+    public File getParent() {
+        return parent;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void setParent(VirtualFile parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public File createFile(WString path, int flagsAndAttributes) {
+        VirtualFile file = new VirtualFile(flagsAndAttributes);
+
+        if (putFile(file, path)) {
+            return file;
+        } else {
+            return null;
+        }
+    }
+
+    private boolean putFile(VirtualFile file, WString newPath) {
+        String[] newFullPath = parsePath(newPath);
+        String newName = newFullPath[newFullPath.length - 1];
+        VirtualFile parent = (VirtualFile) getFileByPath(Arrays.copyOf(newFullPath, newFullPath.length - 1));
+
+        if (parent != null && parent.isDirectory()) {
+            parent.files.put(newName, file);
+
+            file.setName(newName);
+            file.setParent(parent);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private String[] parsePath(WString path) {
+        String trailingsBSlashRemoved = path.toString().replaceAll("^\\\\", "");
+        if (trailingsBSlashRemoved.length() == 0) {
+            return new String[0];
+        }
+        return trailingsBSlashRemoved.split("\\\\+");
+    }
+
+    private String[] parsePath(String path) {
+        return parsePath(new WString(path));
+    }
+
+    @Override
+    public boolean moveFile(WString existingPath, WString newPath, boolean replace) {
+        VirtualFile file = (VirtualFile)getFile(existingPath);
+        if (file == null) {
+            return false;
+        }
+
+        return (!fileExist(newPath) || replace) && putFile((VirtualFile)deleteFileByPath(existingPath), newPath);
+    }
+
+    @Override
+    public boolean fileExist(WString path) {
+        return getFile(path) != null;
+    }
+
+    @Override
+    public File deleteFileByPath(WString path) {
+        VirtualFile file = (VirtualFile)getFile(path);
+        if (file == null) {
+            return null;
+        }
+
+        return file.delete();
+    }
+
+    @Override
+    public File getFile(WString path) {
+        if (!isDirectory()) {
+            return null;
+        }
+
+        return getFileByPath(parsePath(path));
+    }
+
+    @Override
+    public File getFileByPath(String[] path) {
+        VirtualFile file = this;
+
+        for (String name: path) {
+            if (file.isDirectory() && file.files.containsKey(name)) {
+                file = file.files.get(name);
+            } else {
+                return null;
+            }
+        }
+        return file;
+
+    }
+
+    @Override
+    public List<VirtualFile> getFiles() {
+        if (!isDirectory()) {
+            return Collections.emptyList();
+        }
+
+        return new ArrayList<>(files.values());
+    }
+
+    @Override
+    public File delete() {
+        return parent.deleteChild(this);
+    }
+
+    @Override
+    public File deleteChild(VirtualFile virtualFile) {
+        return this.files.remove(virtualFile.getName());
+    }
+
+    @Override
+    public boolean flush(int flags) {
+        setFlagsAndAttributes(flags);
+        setEOF(0);
+        return true;
     }
 }

@@ -1,5 +1,6 @@
 package FileSystem.api;
 
+import FileSystem.VirtualFile;
 import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
 import win32.Win32FindData;
@@ -62,5 +63,12 @@ public interface File {
     public boolean isDirectory();
 
     Win32FindData getWin32FindData();
+
+    boolean setEOF(long length);
+
+
+    File getParent();
+
+    void setParent(VirtualFile parent);
 
 }

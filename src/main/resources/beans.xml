@@ -20,13 +20,24 @@
     </bean>
 
     <bean id="VirtualFS" class="FileSystem.VirtualFS">
-        <property name="createFile" ref="FileCreate"/>
+        <property name="createFile" ref="CreateFile"/>
+        <property name="cleanup" ref="Cleanup"/>
+        <property name="closeFile" ref="CloseFile"/>
+        <!--<property name="createDirectory"ref="CreateDir"/>-->
+        <property name="deleteDirectory" ref="DeleteDir"/>
+        <property name="deleteFile" ref="DeleteFile"/>
+        <property name="findFiles" ref="FindFiles"/>
+
     </bean>
 
 
-    <bean id="FileCreate" class="FileSystem.systemoperations.CreateFile">
-
-        </bean>
+    <bean id="CreateFile" class="FileSystem.systemoperations.CreateFile"/>
+    <bean id="Cleanup" class="FileSystem.systemoperations.Cleanup"/>
+    <bean id="CloseFile" class="FileSystem.systemoperations.CloseFile"/>
+    <bean id="CreateDir" class="FileSystem.systemoperations.CreateDirectory"/>
+    <bean id="DeleteDir" class="FileSystem.systemoperations.DeleteDirectory"/>
+    <bean id="DeleteFile" class="FileSystem.systemoperations.DeleteFile"/>
+    <bean id="FindFiles" class="FileSystem.systemoperations.FindFiles"/>
 
 
 </beans>
