@@ -9,5 +9,4 @@ public class VirtualFS extends DokanOperations {
     public VirtualFS(){
         super();
     }
-
 }
